@@ -15,39 +15,52 @@ class SessionManager: ObservableObject {
     @Published var forceManualLogin = false
 
     init() {
-        if let token = UserDefaults.standard.string(forKey: "authToken"), !token.isEmpty {
+        if let token = KeychainManager.getAuthToken(), !token.isEmpty {
             needsAuthentication = true
         }
     }
-    
+
     func login(with token: String) {
-        UserDefaults.standard.set(token, forKey: "authToken")
+        guard KeychainManager.saveAuthToken(token) else {
+            return
+        }
+
         isLoggedIn = true
         needsAuthentication = false
         forceManualLogin = false
     }
-    
+
     func logout() {
-        UserDefaults.standard.removeObject(forKey: "authToken")
+        KeychainManager.deleteAuthToken()
+
         isLoggedIn = true
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
             self.isLoggedIn = false
         }
+
         needsAuthentication = false
         forceManualLogin = false
     }
-    
+
     func authenticateWithBiometrics() {
         let context = LAContext()
         var error: NSError?
-        
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+
+        if context.canEvaluatePolicy(
+            .deviceOwnerAuthenticationWithBiometrics,
+            error: &error
+        ) {
             let reason = "Authenticate to access CeciStyle Admin"
-            
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+
+            context.evaluatePolicy(
+                .deviceOwnerAuthenticationWithBiometrics,
+                localizedReason: reason
+            ) { success, _ in
                 DispatchQueue.main.async {
                     if success {
                         self.isLoggedIn = true
+                        self.needsAuthentication = false
                     } else {
                         self.forceManualLogin = true
                     }

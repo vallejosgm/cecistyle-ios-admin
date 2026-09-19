@@ -13,7 +13,7 @@ struct Appointment: Codable, Identifiable, Equatable {
     let hour_start: String
     let hour_end: String
     let email: String
-    let phone: String  // <- cambiado a String por seguridad
+    let phone: String
     let fullName: String
     let message: String?
     let id_serv: Int
@@ -22,6 +22,6 @@ struct Appointment: Codable, Identifiable, Equatable {
     let Day: Int
     let Month: Int
     let sentEmail: Int
-    
+
     let isNew: Bool?
 }

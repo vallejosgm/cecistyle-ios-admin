@@ -26,13 +26,13 @@ struct AppointmentEditView: View {
     @State private var sentEmail: Int
     @State private var errorMessage: String?
     
-    // ✅ Explicit initializer
+    // Explicit initializer
     init(appointment: Binding<Appointment>) {
         self._appointment = appointment
         let appt = appointment.wrappedValue
         self._fullName = State(initialValue: appt.fullName)
         self._nameService = State(initialValue: appt.nameService)
-        self._phoneString = State(initialValue: String(appt.phone))
+        self._phoneString = State(initialValue: appt.phone)
         self._email = State(initialValue: appt.email)
         self._hourStart = State(initialValue: String(appt.hour_start.prefix(5)))
         self._hourEnd = State(initialValue: String(appt.hour_end.prefix(5)))
@@ -133,7 +133,7 @@ struct AppointmentEditView: View {
     
     func loadData() {
         fullName = appointment.fullName
-        phoneString = String(appointment.phone)
+        phoneString = appointment.phone
         email = appointment.email
         hourStart = String(appointment.hour_start.prefix(5))
         hourEnd = String(appointment.hour_end.prefix(5))
@@ -151,18 +151,22 @@ struct AppointmentEditView: View {
     }
     
     func updateAppointment() {
-        isLoading = true
         errorMessage = nil
-        
-        guard let phoneInt = Int(phoneString) else {
+
+        let trimmedPhone = phoneString.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        guard !trimmedPhone.isEmpty,
+              trimmedPhone.allSatisfy({ $0.isNumber }) else {
             errorMessage = "Invalid phone number"
             return
         }
-        
+
+        isLoading = true
+
         AppointmentService.updateAppointment(
             id: appointment.id,
             fullName: fullName,
-            phone: phoneInt,
+            phone: trimmedPhone,
             email: email,
             date: date,
             hourStart: hourStart,

@@ -17,15 +17,7 @@ struct AppointmentListView: View {
     @State private var groupedAppointments: [Date: [Appointment]] = [:]
     @State private var scrollTarget: Int?
     @State private var visibleMonthYear: String = ""
-    @State private var nowMonthYear = ""
     @State private var showingAddAppointmentView = false
-
-    private let monthYearFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "en_US")
-        formatter.dateFormat = "MMMM yyyy"
-        return formatter
-    }()
 
     var body: some View {
         NavigationView {
@@ -121,59 +113,24 @@ struct AppointmentListView: View {
         .navigationBarBackButtonHidden(true)
     }
 
-    private func loadAppointments(proxy: ScrollViewProxy? = nil) {
+    private func loadAppointments(
+        proxy: ScrollViewProxy? = nil,
+        isRefresh: Bool = false
+    ) {
         AppointmentService.fetchAppointments { fetched in
             DispatchQueue.main.async {
                 self.appointments = fetched ?? []
                 self.groupAppointmentsByMonth()
                 self.findNearestAppointment()
-                self.isLoading = false
-                
-                // Actualiza el badge con las citas pendientes
-                let pendingCount = appointments.filter { $0.isNew == true }.count
-                //let pendingCount = 2
-                if #available(iOS 17.0, *) {
-                    UNUserNotificationCenter.current().setBadgeCount(pendingCount) { error in
-                        if let error = error {
-                            print("Error setting badge count: \(error.localizedDescription)")
-                        }
-                    }
+                self.updateBadgeCount()
+
+                if isRefresh {
+                    self.isRefreshing = false
                 } else {
-                    UIApplication.shared.applicationIconBadgeNumber = pendingCount
+                    self.isLoading = false
                 }
 
-                if let target = scrollTarget {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        withAnimation {
-                            proxy?.scrollTo(target, anchor: .top)
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private func fetchAppointments(proxy: ScrollViewProxy? = nil) {
-        AppointmentService.fetchAppointments { fetched in
-            DispatchQueue.main.async {
-                self.appointments = fetched ?? []
-                self.groupAppointmentsByMonth()
-                self.findNearestAppointment()
-                
-                // Actualiza el badge con las citas pendientes
-                let pendingCount = appointments.filter { $0.isNew == true }.count
-                //let pendingCount = 2
-                if #available(iOS 17.0, *) {
-                    UNUserNotificationCenter.current().setBadgeCount(pendingCount) { error in
-                        if let error = error {
-                            print("Error setting badge count: \(error.localizedDescription)")
-                        }
-                    }
-                } else {
-                    UIApplication.shared.applicationIconBadgeNumber = pendingCount
-                }
-
-                if let target = scrollTarget {
+                if let target = self.scrollTarget {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                         withAnimation {
                             proxy?.scrollTo(target, anchor: .top)
@@ -186,9 +143,20 @@ struct AppointmentListView: View {
 
     private func refreshAppointments() {
         scrollTarget = nil
-        fetchAppointments()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {  // asegúrate de resetearlo después
-            self.isRefreshing = false
+        loadAppointments(isRefresh: true)
+    }
+
+    private func updateBadgeCount() {
+        let pendingCount = appointments.filter { $0.isNew == true }.count
+
+        if #available(iOS 17.0, *) {
+            UNUserNotificationCenter.current().setBadgeCount(pendingCount) { error in
+                if let error = error {
+                    print("Error setting badge count: \(error.localizedDescription)")
+                }
+            }
+        } else {
+            UIApplication.shared.applicationIconBadgeNumber = pendingCount
         }
     }
 

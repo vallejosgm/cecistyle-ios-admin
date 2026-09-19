@@ -13,6 +13,7 @@
 		7A1EA7482DBFF86600AD50D7 /* FaceIDLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1EA7472DBFF86500AD50D7 /* FaceIDLoginView.swift */; };
 		7A1EA74B2DC00DDE00AD50D7 /* TokenInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1EA74A2DC00DDE00AD50D7 /* TokenInterceptor.swift */; };
 		7A1EA74E2DC00DFF00AD50D7 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1EA74D2DC00DFF00AD50D7 /* SessionManager.swift */; };
+		7A1EA7722DC6000100AD50D7 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1EA7712DC6000100AD50D7 /* KeychainManager.swift */; };
 		7A1EA7502DC01BFC00AD50D7 /* SettingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1EA74F2DC01BFC00AD50D7 /* SettingService.swift */; };
 		7A1EA7522DC01CC600AD50D7 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1EA7512DC01CC600AD50D7 /* LogoView.swift */; };
 		7A1EA7542DC0221100AD50D7 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1EA7532DC0221100AD50D7 /* SplashScreen.swift */; };
@@ -59,6 +60,7 @@
 		7A1EA7472DBFF86500AD50D7 /* FaceIDLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDLoginView.swift; sourceTree = "<group>"; };
 		7A1EA74A2DC00DDE00AD50D7 /* TokenInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInterceptor.swift; sourceTree = "<group>"; };
 		7A1EA74D2DC00DFF00AD50D7 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		7A1EA7712DC6000100AD50D7 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		7A1EA74F2DC01BFC00AD50D7 /* SettingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingService.swift; sourceTree = "<group>"; };
 		7A1EA7512DC01CC600AD50D7 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		7A1EA7532DC0221100AD50D7 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				7A1EA74D2DC00DFF00AD50D7 /* SessionManager.swift */,
+				7A1EA7712DC6000100AD50D7 /* KeychainManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				7A74D9A32DBDD17A00887B02 /* CeciStyleAdminApp.swift in Sources */,
 				7A1EA76A2DC1FD1800AD50D7 /* Config.swift in Sources */,
 				7A1EA74E2DC00DFF00AD50D7 /* SessionManager.swift in Sources */,
+				7A1EA7722DC6000100AD50D7 /* KeychainManager.swift in Sources */,
 				7A74D9CE2DBDD4D600887B02 /* AppointmentService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

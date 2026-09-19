@@ -16,7 +16,6 @@ struct AppointmentService {
             return
         }
 
-        // 🗓️ Generar meses y años como tu JavaScript
         let now = Date()
         var calendar = Calendar(identifier: .gregorian)
         calendar.timeZone = TimeZone(identifier: "America/Denver")!
@@ -73,10 +72,6 @@ struct AppointmentService {
                 return
             }
 
-            //if let jsonString = String(data: data, encoding: .utf8) {
-            //    print("JSON recibido:\n\(jsonString)")
-            //}
-
             do {
                 let decoded = try JSONDecoder().decode([Appointment].self, from: data)
                 completion(decoded)
@@ -90,7 +85,7 @@ struct AppointmentService {
     
     static func addAppointment(
         fullName: String,
-        phone: Int,
+        phone: String,
         email: String,
         date: Date,
         hourStart: String,
@@ -128,8 +123,6 @@ struct AppointmentService {
                 return
             }
             
-            print(body)
-            print(url)
             
             var request = TokenInterceptor.authorizedRequest(url: url, method: "POST", body: jsonData)
             request.setValue("application/json", forHTTPHeaderField: "Accept")
@@ -144,16 +137,15 @@ struct AppointmentService {
                 guard let httpResponse = response as? HTTPURLResponse,
                       (200...299).contains(httpResponse.statusCode),
                       let data = data else {
-                        if let data = data, let errorString = String(data: data, encoding: .utf8) {
-                            print("Server error: \(errorString)")
-                        }
+                    if let httpResponse = response as? HTTPURLResponse {
+                        print("Add appointment failed with status: \(httpResponse.statusCode)")
+                    }
                     completion(nil)
                     return
                 }
                 
                 do {
                     let decoded = try JSONDecoder().decode(UpdateAppointmentResponse.self, from: data)
-                    //print(data)
                     completion(decoded.appointment)
                 } catch {
                     print("Failed to decode added appointment: \(error)")
@@ -168,7 +160,7 @@ struct AppointmentService {
         completion: @escaping (Bool) -> Void
     ) {
         guard let url = URL(string: "\(Config.baseURL)/api/appointments/delete/\(id)") else {
-            print("❌ URL inválida")
+            print("URL inválida")
             completion(false)
             return
         }
@@ -177,24 +169,21 @@ struct AppointmentService {
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
-                print("❌ Error al eliminar: \(error.localizedDescription)")
+                print("Error al eliminar: \(error.localizedDescription)")
                 completion(false)
                 return
             }
             
             guard let httpResponse = response as? HTTPURLResponse else {
-                print("❌ Respuesta no válida")
+                print("Respuesta no válida")
                 completion(false)
                 return
             }
             
             if (200...299).contains(httpResponse.statusCode) {
-                print("✅ Eliminación exitosa, status: \(httpResponse.statusCode)")
                 completion(true)
             } else {
-                if let data = data, let errorString = String(data: data, encoding: .utf8) {
-                    print("❌ Error del servidor: \(errorString)")
-                }
+                print("Delete appointment failed with status: \(httpResponse.statusCode)")
                 completion(false)
             }
         }
@@ -205,7 +194,7 @@ struct AppointmentService {
     static func updateAppointment(
         id: Int,
         fullName: String,
-        phone: Int,
+        phone: String,
         email: String,
         date: Date,
         hourStart: String,
@@ -258,8 +247,8 @@ struct AppointmentService {
             guard let httpResponse = response as? HTTPURLResponse,
                   (200...299).contains(httpResponse.statusCode),
                   let data = data else {
-                if let data = data, let errorString = String(data: data, encoding: .utf8) {
-                    print("Server error: \(errorString)")
+                if let httpResponse = response as? HTTPURLResponse {
+                    print("Update appointment failed with status: \(httpResponse.statusCode)")
                 }
                 completion(nil)
                 return

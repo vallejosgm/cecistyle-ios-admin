@@ -70,15 +70,6 @@ struct AppointmentDetailView: View {
             AppointmentEditView(appointment: $appointment)
         }
     }
-    
-    func formatPhone(_ phone: Int) -> String {
-        let phoneString = String(phone)
-        guard phoneString.count == 10 else { return phoneString }
-        let area = phoneString.prefix(3)
-        let middle = phoneString.dropFirst(3).prefix(3)
-        let last = phoneString.suffix(4)
-        return "(\(area)) \(middle)-\(last)"
-    }
 
     func deleteAppointment() {
         // Aquí llamas a tu API de eliminar

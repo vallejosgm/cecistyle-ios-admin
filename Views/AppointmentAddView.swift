@@ -112,19 +112,23 @@ struct AppointmentAddView: View {
     }
     
     func saveAppointment() {
-        isLoading = true
         errorMessage = nil
-        
-        guard let phoneInt = Int(phoneString) else {
+
+        let trimmedPhone = phoneString.trimmingCharacters(in: .whitespacesAndNewlines)
+
+        guard !trimmedPhone.isEmpty,
+              trimmedPhone.allSatisfy({ $0.isNumber }) else {
             errorMessage = "Invalid phone number"
             return
         }
-        
+
+        isLoading = true
+
         let sentEmailValue = sentEmail ? 0 : 1
-        
+
         AppointmentService.addAppointment(
             fullName: fullName,
-            phone: phoneInt,
+            phone: trimmedPhone,
             email: email,
             date: date,
             hourStart: hourStart,
@@ -137,7 +141,7 @@ struct AppointmentAddView: View {
                 DispatchQueue.main.async {
                     isLoading = false
                     if let added = newAppointment {
-                        onAdd(added)   // <-- enviamos al ListView
+                        onAdd(added)
                         dismiss()
                     } else {
                         errorMessage = "Failed to add appointment"

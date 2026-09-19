@@ -88,7 +88,7 @@ struct LoginView: View {
             return
         }
         
-        UserDefaults.standard.removeObject(forKey: "authToken")
+        KeychainManager.deleteAuthToken()
         
         let request = TokenInterceptor.authorizedRequest(url: url, method: "POST", body: jsonData)
         
@@ -114,10 +114,14 @@ struct LoginView: View {
             do {
                 if let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
                    let token = json["token"] as? String {
-                    // Guardar token en UserDefaults
-                    UserDefaults.standard.set(token, forKey: "authToken")
-                    DispatchQueue.main.async {
-                        self.isLoggedIn = true
+                    if KeychainManager.saveAuthToken(token) {
+                        DispatchQueue.main.async {
+                            self.isLoggedIn = true
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            self.errorMessage = "Unable to securely save authentication."
+                        }
                     }
                 } else {
                     DispatchQueue.main.async {

@@ -52,7 +52,7 @@ struct AppointmentRow: View {
     }
     
     var formattedPhone: String {
-        let phoneString = String(appt.phone)
+        let phoneString = appt.phone
         guard phoneString.count == 10 else { return phoneString }
         let areaCode = phoneString.prefix(3)
         let middle = phoneString.dropFirst(3).prefix(3)
@@ -94,7 +94,7 @@ struct AppointmentRow: View {
     
     var extractedDay: String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyy-MM-dd"
+        formatter.dateFormat = "yyyy-MM-dd"
         if let dateObj = formatter.date(from: appt.date) {
             let day = Calendar.current.component(.day, from: dateObj)
             return String(day)
