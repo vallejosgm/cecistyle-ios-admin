@@ -26,6 +26,17 @@ struct CeciStyleRootView: View {
             } else if sessionManager.isLoggedIn {
                 AppointmentListView()
                     .environmentObject(sessionManager)
+                    .onAppear {
+                                if #available(iOS 17.0, *) {
+                                    UNUserNotificationCenter.current().setBadgeCount(0) { error in
+                                        if let error = error {
+                                            print("Error resetting badge count: \(error)")
+                                        }
+                                    }
+                                } else {
+                                    UIApplication.shared.applicationIconBadgeNumber = 0
+                                }
+                            }
             } else if sessionManager.needsAuthentication && !sessionManager.forceManualLogin {
                 FaceIDLoginView(isLoggedIn: $sessionManager.isLoggedIn, forceManualLogin: $sessionManager.forceManualLogin)
                     .environmentObject(sessionManager)

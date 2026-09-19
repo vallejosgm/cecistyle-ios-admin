@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00B344F1BD598E36A16C6BDF /* Pods_CeciStyleAdmin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9BF39C03AACAF576298C19 /* Pods_CeciStyleAdmin.framework */; };
 		7A1EA73E2DBFC3F800AD50D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A1EA73D2DBFC3F800AD50D7 /* Assets.xcassets */; };
 		7A1EA7462DBFF35000AD50D7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1EA7452DBFF35000AD50D7 /* LoginView.swift */; };
 		7A1EA7482DBFF86600AD50D7 /* FaceIDLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1EA7472DBFF86500AD50D7 /* FaceIDLoginView.swift */; };
@@ -29,6 +30,8 @@
 		7A74D9CE2DBDD4D600887B02 /* AppointmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74D9CD2DBDD4D600887B02 /* AppointmentService.swift */; };
 		7A74D9D12DBDEE0100887B02 /* AppointmentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74D9D02DBDEE0100887B02 /* AppointmentListView.swift */; };
 		7A74D9D32DBE053A00887B02 /* AppointmentRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A74D9D22DBE053A00887B02 /* AppointmentRow.swift */; };
+		7AA780572DD7FD1500943FBF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7AA780562DD7FD1500943FBF /* GoogleService-Info.plist */; platformFilter = ios; };
+		7AA780592DD80A0F00943FBF /* NotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA780582DD80A0F00943FBF /* NotificationDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17FF3D66BA34BC22AFB93BD6 /* Pods-CeciStyleAdmin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CeciStyleAdmin.debug.xcconfig"; path = "Target Support Files/Pods-CeciStyleAdmin/Pods-CeciStyleAdmin.debug.xcconfig"; sourceTree = "<group>"; };
+		757EA5F825B05F781B686870 /* Pods-CeciStyleAdmin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CeciStyleAdmin.release.xcconfig"; path = "Target Support Files/Pods-CeciStyleAdmin/Pods-CeciStyleAdmin.release.xcconfig"; sourceTree = "<group>"; };
 		7A1EA73D2DBFC3F800AD50D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A1EA7452DBFF35000AD50D7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		7A1EA7472DBFF86500AD50D7 /* FaceIDLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDLoginView.swift; sourceTree = "<group>"; };
@@ -75,6 +80,9 @@
 		7A74D9CD2DBDD4D600887B02 /* AppointmentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentService.swift; sourceTree = "<group>"; };
 		7A74D9D02DBDEE0100887B02 /* AppointmentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentListView.swift; sourceTree = "<group>"; };
 		7A74D9D22DBE053A00887B02 /* AppointmentRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentRow.swift; sourceTree = "<group>"; };
+		7AA780562DD7FD1500943FBF /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7AA780582DD80A0F00943FBF /* NotificationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDelegate.swift; sourceTree = "<group>"; };
+		9F9BF39C03AACAF576298C19 /* Pods_CeciStyleAdmin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CeciStyleAdmin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00B344F1BD598E36A16C6BDF /* Pods_CeciStyleAdmin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +131,7 @@
 		7A74D9962DBDD17A00887B02 = {
 			isa = PBXGroup;
 			children = (
+				7AA780582DD80A0F00943FBF /* NotificationDelegate.swift */,
 				7A1EA7692DC1FD1800AD50D7 /* Config.swift */,
 				7A1EA7672DC1F76200AD50D7 /* Info.plist */,
 				7A1EA74C2DC00DE900AD50D7 /* Managers */,
@@ -130,6 +140,9 @@
 				7A74D9CC2DBDD3E300887B02 /* Services */,
 				7A74D9C92DBDD2B500887B02 /* Models */,
 				7A74D9A02DBDD17A00887B02 /* Products */,
+				7AA780562DD7FD1500943FBF /* GoogleService-Info.plist */,
+				94D91207E7DBC2FF067E5F20 /* Pods */,
+				D0E441308548194CD70AD358 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -182,6 +195,23 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		94D91207E7DBC2FF067E5F20 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				17FF3D66BA34BC22AFB93BD6 /* Pods-CeciStyleAdmin.debug.xcconfig */,
+				757EA5F825B05F781B686870 /* Pods-CeciStyleAdmin.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D0E441308548194CD70AD358 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9F9BF39C03AACAF576298C19 /* Pods_CeciStyleAdmin.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -189,17 +219,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7A74D9C02DBDD17E00887B02 /* Build configuration list for PBXNativeTarget "CeciStyleAdmin" */;
 			buildPhases = (
+				51FAFD3AA04750341805630E /* [CP] Check Pods Manifest.lock */,
 				7A74D99B2DBDD17A00887B02 /* Sources */,
 				7A74D99C2DBDD17A00887B02 /* Frameworks */,
 				7A74D99D2DBDD17A00887B02 /* Resources */,
+				063BC8164DE1C5CF9BBE6292 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = CeciStyleAdmin;
-			packageProductDependencies = (
-			);
 			productName = CeciStyleAdmin;
 			productReference = 7A74D99F2DBDD17A00887B02 /* CeciStyleAdmin.app */;
 			productType = "com.apple.product-type.application";
@@ -218,8 +248,6 @@
 				7A74D9AE2DBDD17E00887B02 /* PBXTargetDependency */,
 			);
 			name = CeciStyleAdminTests;
-			packageProductDependencies = (
-			);
 			productName = CeciStyleAdminTests;
 			productReference = 7A74D9AC2DBDD17E00887B02 /* CeciStyleAdminTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -238,8 +266,6 @@
 				7A74D9B82DBDD17E00887B02 /* PBXTargetDependency */,
 			);
 			name = CeciStyleAdminUITests;
-			packageProductDependencies = (
-			);
 			productName = CeciStyleAdminUITests;
 			productReference = 7A74D9B62DBDD17E00887B02 /* CeciStyleAdminUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -294,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A1EA73E2DBFC3F800AD50D7 /* Assets.xcassets in Resources */,
+				7AA780572DD7FD1500943FBF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +340,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		063BC8164DE1C5CF9BBE6292 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CeciStyleAdmin/Pods-CeciStyleAdmin-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CeciStyleAdmin/Pods-CeciStyleAdmin-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CeciStyleAdmin/Pods-CeciStyleAdmin-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		51FAFD3AA04750341805630E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CeciStyleAdmin-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7A74D99B2DBDD17A00887B02 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -323,6 +392,7 @@
 				7A1EA7482DBFF86600AD50D7 /* FaceIDLoginView.swift in Sources */,
 				7A1EA74B2DC00DDE00AD50D7 /* TokenInterceptor.swift in Sources */,
 				7A1EA7562DC0225D00AD50D7 /* CeciStyleRootView.swift in Sources */,
+				7AA780592DD80A0F00943FBF /* NotificationDelegate.swift in Sources */,
 				7A1EA75E2DC1077700AD50D7 /* Service.swift in Sources */,
 				7A74D9CB2DBDD2F600887B02 /* Appointment.swift in Sources */,
 				7A1EA75A2DC0464C00AD50D7 /* AppointmentAddView.swift in Sources */,
@@ -496,6 +566,7 @@
 		};
 		7A74D9C12DBDD17E00887B02 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17FF3D66BA34BC22AFB93BD6 /* Pods-CeciStyleAdmin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -527,6 +598,7 @@
 		};
 		7A74D9C22DBDD17E00887B02 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 757EA5F825B05F781B686870 /* Pods-CeciStyleAdmin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
