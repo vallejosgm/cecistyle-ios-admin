@@ -8,6 +8,10 @@ CeciStyle iOS Admin provides mobile access to appointment management for Ceci'St
 
 The project was developed in Swift using SwiftUI and integrates authentication, biometric access, Firebase Cloud Messaging, and backend services.
 
+## App Preview
+
+![CeciStyle Admin iOS application](docs/images/cecistyle-admin-showcase.png)
+
 ## Features
 
 - View customer appointments organized by date
