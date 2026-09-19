@@ -80,4 +80,4 @@ The application was developed for a real business workflow and integrates with a
 
 Gean Vallejos
 
-Software Engineering
+Software Developer
